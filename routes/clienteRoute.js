@@ -1,12 +1,10 @@
-const express =  require('express');
-const clienteController = require('../controllers/ClienteController.js');
+const express = require('express');
+const router = express.Router();
 
+// Defina suas rotas aqui
+router.get('/', (req, res) => {
+    res.send('Página inicial do cliente');
+});
 
-const router = express.router();
-
-router.post('/', clienteController.criarCliente);
-router.get('/', clienteController.listarCliente);
-
-
+// Exporte o router
 module.exports = router;
-
