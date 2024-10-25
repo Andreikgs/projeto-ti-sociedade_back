@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const authRoutes = require('./routes/authRoute');
+const ClienteRoutes = require ('./routes/clienteRoute.js')
 const cookieParser = require('cookie-parser');
 const authenticateToken = require('./middleware/authMiddleware');
 
@@ -12,6 +13,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 app.use('/auth', authRoutes);
+app.use('/clientes', ClienteRoutes);
 
 app.get('/dashboard', authenticateToken, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'dashboard.html'));

@@ -1,76 +1,10 @@
 @import url('global.css');
-
+@import url('login.css');
 
 body {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-}
-
-.login-container {
-    max-width: 360px;
-    width: 100%;
-    padding: 20px;
-    border: 0.5px solid black;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: var(--background-color);
-}
-
-.login-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.login-header h1 {
-    font-size: var(--text-lg);
-    color: var(--brand-color);
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-form label {
-    margin-bottom: 8px;
-    font-size: var(--text-md);
-    color: var(--text-color-primary);
-}
-
-.login-form input,
-.login-form button {
-    margin-bottom: 16px;
-    padding: 10px;
-    font-size: var(--text);
-    border: 1px solid var(--skeleton-color);
-    border-radius: 4px;
-    background-color: var(--surface-color);
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.login-form button {
-    color: var(--background-color);
-    background-color: var(--brand-color);
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.login-form button:hover {
-    background-color: #d94439;
-}
-
-.error-message {
-    color: #d94439;
-    font-size: var(--text-sm);
-    text-align: center;
-    margin-top: 10px;
-}
-
-@media (max-width: 768px) {
-    .login-container {
-        padding: 10px; 
-    }
+    background-color: var(--background-color-secondary);
 }

@@ -1,0 +1,63 @@
+@import url('global.css');
+
+.login-container {
+    max-width: 360px;
+    width: 100%;
+    padding: 20px;
+    border: 0.5px solid black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--background-color-primary);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-header h1 {
+    font-size: var(--text-lg);
+    color: var(--text-color-primary)
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    margin-bottom: 8px;
+    font-size: var(--text-md);
+    color: var(--text-color-primary);
+}
+
+.login-form input,
+.login-form button {
+    margin-bottom: 16px;
+    padding: 10px;
+    font-size: var(--text);
+    border: 1px solid var(--skeleton-color);
+    border-radius: 4px;
+    background-color: var(--surface-color);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-form button {
+    color: var(--text-color-primary);
+    background-color: var(--background-color-secondary);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+    background-color: var(--background-color-tertiary);
+    color: var(--text-color-primary);
+}
+
+.error-message {
+    color: #d94439;
+    font-size: var(--text-sm);
+    text-align: center;
+    margin-top: 10px;
+}
