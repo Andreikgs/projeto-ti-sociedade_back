@@ -1,7 +1,7 @@
 const TipoServico = require('../models/tipoServico');
 
 class TipoServicoController {
-    async inserir(req, res) {
+    static async inserir(req, res) { 
         try {
             await TipoServico.inserir(req.body.descricao);
             res.status(201).send('Tipo de serviço inserido com sucesso');
@@ -10,7 +10,7 @@ class TipoServicoController {
         }
     }
 
-    async atualizar(req, res) {
+    static async atualizar(req, res) {
         try {
             await TipoServico.atualizar(req.params.id, req.body.descricao);
             res.send('Tipo de serviço atualizado com sucesso');
@@ -19,7 +19,7 @@ class TipoServicoController {
         }
     }
 
-    async buscar(req, res) {
+    static async buscar(req, res) { 
         try {
             const tipoServico = await TipoServico.buscar(req.params.id);
             res.json(tipoServico);
@@ -28,7 +28,7 @@ class TipoServicoController {
         }
     }
 
-    async deletar(req, res) {
+    static async deletar(req, res) {
         try {
             await TipoServico.deletar(req.params.id);
             res.send('Tipo de serviço deletado com sucesso');
@@ -37,7 +37,7 @@ class TipoServicoController {
         }
     }
 
-    async listar(req, res) {
+    static async listar(req, res) { 
         try {
             const tiposServico = await TipoServico.listar();
             res.json(tiposServico);
@@ -46,4 +46,5 @@ class TipoServicoController {
         }
     }
 }
+
 module.exports = TipoServicoController;
