@@ -3,19 +3,25 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
     const login_usu = document.getElementById('login_usu').value;
     const senha_usu = document.getElementById('senha_usu').value;
+    const errorMessageDiv = document.getElementById('errorMessage');
 
-    const response = await fetch('/auth/login', {
+    const response = await fetch('/usuarios/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ login_usu, senha_usu })
+        body: JSON.stringify({ username: login_usu, senha: senha_usu })
     });
 
     if (response.ok) {
         window.location.href = '/dashboard'; 
     } else {
         const errorText = await response.text();
-        alert(errorText); 
+        errorMessageDiv.textContent = errorText; 
+        errorMessageDiv.style.display = 'block'; 
+
+        setTimeout(() => {
+            errorMessageDiv.style.display = 'none';
+        }, 3000);
     }
 });

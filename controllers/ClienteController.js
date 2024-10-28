@@ -1,27 +1,50 @@
-const Cliente = require('../models/clienteModel');
+const Cliente = require('../models/cliente');
 
 class ClienteController {
-    static async criarCliente(req, res) {
+    async inserir(req, res) {
         try {
-            const { cnpj, razaoSocial, nomeFantasia, status, dataCadastro } = req.body;
-            const cliente = new Cliente(cnpj, razaoSocial, nomeFantasia, status, dataCadastro);
-            const id = await Cliente.criar(cliente);
-            res.status(201).json({ id });
+            await Cliente.inserir(req.body.cnpj, req.body.razaoSocial, req.body.nomeFantasia, req.body.status, req.body.dataCadastro);
+            res.status(201).send('Cliente inserido com sucesso');
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            res.status(500).send(error.message);
         }
     }
 
-    static async listarClientes(req, res) {
+    async atualizar(req, res) {
         try {
-            const clientes = await Cliente.listar();
-            res.status(200).json(clientes);
+            await Cliente.atualizar(req.params.id, req.body.cnpj, req.body.razaoSocial, req.body.nomeFantasia, req.body.status, req.body.dataCadastro);
+            res.send('Cliente atualizado com sucesso');
         } catch (error) {
-            res.status(500).json({ error: error.message });
+            res.status(500).send(error.message);
         }
     }
 
-  
+    async buscar(req, res) {
+        try {
+            const cliente = await Cliente.buscar(req.params.id);
+            res.json(cliente);
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    }
+
+    async deletar(req, res) {
+        try {
+            await Cliente.deletar(req.params.id);
+            res.send('Cliente deletado com sucesso');
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    }
+
+    async listar(req, res) {
+        try {
+            const clientes = await Cliente.listar(); 
+            res.json(clientes);
+        } catch (error) {
+            res.status(500).send(error.message);
+        }
+    }
 }
 
 module.exports = ClienteController;

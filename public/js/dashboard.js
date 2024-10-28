@@ -1,27 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const sidebar = document.getElementById("sidebar");
-    const navItems = document.querySelectorAll('.nav ul li');
+    const modal = document.getElementById("modal");
+    const span = document.getElementsByClassName("close")[0];
 
-    // Expandir a sidebar ao passar o mouse sobre os ícones
-    navItems.forEach(item => {
-        item.addEventListener("mouseover", function () {
-            sidebar.classList.remove("collapsed");
+    if (!modal || !span) return; 
+
+    
+    const cadastrarClientesButton = document.getElementById("cadastrar-clientes");
+    if (cadastrarClientesButton) {
+        cadastrarClientesButton.addEventListener("click", () => {
+            modal.style.display = "block";
         });
+    }
 
-        item.addEventListener("mouseleave", function () {
-            if (!sidebar.matches(':hover')) {
-                sidebar.classList.add("collapsed");
-            }
-        });
-    });
+    span.onclick = () => {
+        modal.style.display = "none";
+    };
 
-    // Manter a sidebar expandida enquanto o mouse estiver sobre ela
-    sidebar.addEventListener("mouseover", function () {
-        sidebar.classList.remove("collapsed");
-    });
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
 
-    // Colapsar a sidebar ao sair da sidebar
-    sidebar.addEventListener("mouseleave", function () {
-        sidebar.classList.add("collapsed");
-    });
 });
+
+async function loadSidebar() {
+    try {
+        const response = await fetch('components/sidebar/html/sidebar.html');
+        if (!response.ok) {
+            throw new Error('Erro ao carregar a sidebar');
+        }
+        const sidebarHTML = await response.text();
+        document.getElementById('sidebar').innerHTML = sidebarHTML;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadSidebar);
