@@ -1,3 +1,44 @@
 @import url('global.css');
 @import url('../components/modal/css/modalCliente.css');
 @import url('../components/sidebar/css/sidebar.css');
+
+.container {
+    display: flex; 
+    min-height: 100vh; 
+}
+
+.content {
+    flex: 1; 
+    margin-left: 20px; 
+    padding-top: 20px; 
+    max-width: calc(100% - 240px); 
+    overflow: auto; 
+}
+
+.content h1 {
+    margin-top: 10px; 
+}
+
+.grid {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
+    margin-top: 50px;
+}
+
+.card {
+    background-color: #e0e0e0; 
+    border: 1px solid #ccc; 
+    border-radius: 15px; 
+    padding: 10px; 
+    height: 150px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s; 
+}
+
+.card:hover {
+    transform: scale(0.90); 
+}

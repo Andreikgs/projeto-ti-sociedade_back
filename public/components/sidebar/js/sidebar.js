@@ -1,50 +1,29 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const sidebar = document.getElementById("sidebar");
-    const navItems = document.querySelectorAll(".nav ul li");
-    const logoutButton = document.getElementById("logout-button");
+document.addEventListener("DOMContentLoaded", async function () {
+    await loadSidebar();
+});
 
-    if (!sidebar) return;
+async function loadSidebar() {
+    try {
+        const response = await fetch('components/sidebar/html/sidebar.html');
+        if (!response.ok) {
+            throw new Error('Erro ao carregar a sidebar');
+        }
+        const sidebarHTML = await response.text();
+        document.getElementById('sidebar').innerHTML = sidebarHTML;
 
-    sidebar.classList.add("collapsed");
+        
+        addSidebarEventListeners();
+    } catch (error) {
+        console.error(error);
+    }
+}
 
-    sidebar.addEventListener("mouseenter", function () {
-        sidebar.classList.remove("collapsed");
-    });
-
-    sidebar.addEventListener("mouseleave", function () {
-        sidebar.classList.add("collapsed");
-        navItems.forEach(item => {
-            const subMenu = item.querySelector(".sub-menu");
-            if (subMenu) {
-                subMenu.classList.remove("active");
-            }
-        });
-    });
-
-    navItems.forEach(item => {
-        item.addEventListener("click", function (event) {
-            const subMenu = this.querySelector(".sub-menu");
-            if (subMenu) {
-                event.stopPropagation();
-                subMenu.classList.toggle("active");
-                navItems.forEach(otherItem => {
-                    if (otherItem !== this) {
-                        const otherSubMenu = otherItem.querySelector(".sub-menu");
-                        if (otherSubMenu) {
-                            otherSubMenu.classList.remove("active");
-                        }
-                    }
-                });
-            }
-        });
-    });
-
-
-    if (logoutButton) {
-        logoutButton.addEventListener("click", function (event) {
-            event.preventDefault(); 
-            localStorage.removeItem("token"); 
-            window.location.href = "/"; 
+function addSidebarEventListeners() {
+    const cadastrarClientesButton = document.getElementById("adicionar-clientes");
+    if (cadastrarClientesButton) {
+        cadastrarClientesButton.addEventListener("click", () => {
+            const modal = document.getElementById("modal");
+            modal.style.display = "block";
         });
     }
-});
+}

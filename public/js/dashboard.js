@@ -1,10 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const modal = document.getElementById("modal");
     const span = document.getElementsByClassName("close")[0];
 
-    if (!modal || !span) return; 
+    if (!modal || !span) return;
 
-    
+   
+    await loadSidebar();
+
     const cadastrarClientesButton = document.getElementById("cadastrar-clientes");
     if (cadastrarClientesButton) {
         cadastrarClientesButton.addEventListener("click", () => {
@@ -21,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.style.display = "none";
         }
     };
-
 });
 
 async function loadSidebar() {
@@ -32,9 +33,18 @@ async function loadSidebar() {
         }
         const sidebarHTML = await response.text();
         document.getElementById('sidebar').innerHTML = sidebarHTML;
+        addSidebarEventListeners();
     } catch (error) {
         console.error(error);
     }
 }
 
-document.addEventListener("DOMContentLoaded", loadSidebar);
+function addSidebarEventListeners() {
+    const cadastrarClientesButton = document.getElementById("adicionar-clientes");
+    if (cadastrarClientesButton) {
+        cadastrarClientesButton.addEventListener("click", () => {
+            const modal = document.getElementById("modal");
+            modal.style.display = "block";
+        });
+    }
+}

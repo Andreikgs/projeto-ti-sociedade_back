@@ -1,59 +1,48 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     const modal = document.getElementById("modal");
     const span = document.getElementsByClassName("close")[0];
-    const form = document.getElementById("form-cadastrar-cliente");
-    const cadastrarClientesButton = document.getElementById("cadastrar-clientes");
 
-    if (!modal || !span || !form || !cadastrarClientesButton) return; 
+  
+    await loadModalContent();
 
- 
-    const openModal = () => {
-        modal.style.display = "block";
-    };
+    if (!modal || !span) return;
 
-
-    const closeModal = () => {
+    span.onclick = () => {
         modal.style.display = "none";
     };
 
-   
-    cadastrarClientesButton.addEventListener("click", openModal);
-
- 
-    span.onclick = closeModal;
-
-
     window.onclick = function (event) {
         if (event.target === modal) {
-            closeModal();
+            modal.style.display = "none";
         }
     };
-
-    form.addEventListener("submit", async function (event) {
-        event.preventDefault();
-        const cnpj = event.target[0].value;
-        const razaoSocial = event.target[1].value;
-        const nomeFantasia = event.target[2].value;
-        const status = event.target[3].value;
-        const dataCadastro = event.target[4].value;
-
-        try {
-            const response = await fetch('/clientes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ cnpj, razaoSocial, nomeFantasia, status, dataCadastro })
-            });
-            if (response.ok) {
-                alert('Cliente cadastrado com sucesso!');
-                closeModal();
-            } else {
-                alert('Erro ao cadastrar cliente.');
-            }
-        } catch (error) {
-            console.error('Erro:', error);
-            alert('Erro ao cadastrar cliente.');
-        }
-    });
 });
+
+async function loadModalContent() {
+    try {
+        const response = await fetch('components/modal/html/modal.html');
+        if (!response.ok) {
+            throw new Error('Erro ao carregar o conteúdo da modal');
+        }
+        const modalHTML = await response.text();
+        document.getElementById('modal').innerHTML = modalHTML;
+
+       
+        addModalEventListeners();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function addModalEventListeners() {
+    const cadastrarClientesButton = document.getElementById("clientForm");
+    if (cadastrarClientesButton) {
+        cadastrarClientesButton.addEventListener("submit", (event) => {
+            event.preventDefault(); 
+           
+            console.log("Cliente cadastrado!");
+            const modal = document.getElementById("modal");
+            modal.style.display = "none";
+        });
+    }
+}

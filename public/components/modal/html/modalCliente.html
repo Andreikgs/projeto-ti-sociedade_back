@@ -1,17 +1,23 @@
-<div id="modal" style="display:none;">
-    <span class="close">&times;</span>
-    <h2>Cadastrar Cliente</h2>
-    <form id="form-cadastrar-cliente">
-        <input type="text" placeholder="CNPJ" required>
-        <input type="text" placeholder="Razão Social" required>
-        <input type="text" placeholder="Nome Fantasia" required>
-        <select required>
-            <option value="">Status</option>
-            <option value="Ativo">Ativo</option>
-            <option value="Inativo">Inativo</option>
-        </select>
-        <input type="date" required>
-        <button type="submit">Cadastrar</button>
-    </form>
-</div>
-<button id="cadastrar-clientes">Cadastrar Cliente</button>
+<span class="close">&times;</span>
+<h2>Cadastrar Cliente</h2>
+<form id="clientForm">
+    <label for="cnpj">CNPJ:</label>
+    <input type="text" id="cnpj" name="cnpj" required />
+
+    <label for="razaoSocial">Razão Social:</label>
+    <input type="text" id="razaoSocial" name="razaoSocial" required />
+
+    <label for="nomeFantasia">Nome Fantasia:</label>
+    <input type="text" id="nomeFantasia" name="nomeFantasia" />
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+        <option value="ativo">Ativo</option>
+        <option value="inativo">Inativo</option>
+    </select>
+
+    <label for="dataCadastro">Data de Cadastro:</label>
+    <input type="date" id="dataCadastro" name="dataCadastro" required />
+
+    <button type="submit">Cadastrar</button>
+</form>
