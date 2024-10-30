@@ -1,23 +1,27 @@
-<span class="close">&times;</span>
-<h2>Cadastrar Cliente</h2>
-<form id="clientForm">
-    <label for="cnpj">CNPJ:</label>
-    <input type="text" id="cnpj" name="cnpj" required />
+<div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Cadastrar Cliente</h2>
+    <form id="clientForm">
+        <label for="cnpj">CNPJ:</label>
+        <input type="text" id="cnpj" name="cnpj" required />
 
-    <label for="razaoSocial">Razão Social:</label>
-    <input type="text" id="razaoSocial" name="razaoSocial" required />
+        <label for="razaoSocial">Razão Social:</label>
+        <input type="text" id="razaoSocial" name="razaoSocial" required />
 
-    <label for="nomeFantasia">Nome Fantasia:</label>
-    <input type="text" id="nomeFantasia" name="nomeFantasia" />
+        <label for="nomeFantasia">Nome Fantasia:</label>
+        <input type="text" id="nomeFantasia" name="nomeFantasia" />
 
-    <label for="status">Status:</label>
-    <select id="status" name="status" required>
-        <option value="ativo">Ativo</option>
-        <option value="inativo">Inativo</option>
-    </select>
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="ativo">Ativo</option>
+            <option value="inativo">Inativo</option>
+        </select>
 
-    <label for="dataCadastro">Data de Cadastro:</label>
-    <input type="date" id="dataCadastro" name="dataCadastro" required />
+        <label for="dataCadastro">Data de Cadastro:</label>
+        <input type="date" id="dataCadastro" name="dataCadastro" required />
 
-    <button type="submit">Cadastrar</button>
-</form>
+        <button type="submit">Cadastrar</button>
+    </form>
+    <div id="error-message" style="color: red; display: none;"></div>
+    <div id="success-message" style="display:none; color: green;"></div>
+</div>
