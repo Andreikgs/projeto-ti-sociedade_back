@@ -7,7 +7,6 @@
     overflow: hidden; 
     display: flex; 
     align-items: flex-start; 
-    padding: 10px 0; 
 }
 
 .sidebar:hover {
@@ -20,7 +19,7 @@
 
 .nav-links {
     margin: 0; 
-    padding: 0; 
+    padding: 10px 0; 
     display: flex; 
     flex-direction: column; 
     flex-grow: 1; 
@@ -59,9 +58,9 @@
     margin-left: 20px;
 }
 
-.nav-links li:hover .sub-links {
+/* .nav-links li:hover .sub-links {
     display: block; 
-}
+} */
 
 .sub-links a {
     display: flex;
