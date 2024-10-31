@@ -1,11 +1,25 @@
+import { addSidebarEventListeners } from 'components/sidebar/js/sidebar.js';
+
 document.addEventListener("DOMContentLoaded", async function () {
     const modal = document.getElementById("modal");
     const span = document.getElementsByClassName("close")[0];
 
     if (!modal || !span) return;
 
-   
-    await loadSidebar();
+    //Alterado método de carregamento da sidebar para carregar junto o JS
+    try {
+        const response = await fetch('components/sidebar/html/sidebar.html');
+        if (!response.ok) {
+            throw new Error('Erro ao carregar a sidebar');
+        }
+        const sidebarHTML = await response.text();
+        document.getElementById('sidebar').innerHTML = sidebarHTML;
+
+        addSidebarEventListeners(); // Chama a função importada
+    } catch (error) {
+        console.error(error);
+    }
+    
 
     const cadastrarClientesButton = document.getElementById("cadastrar-clientes");
     if (cadastrarClientesButton) {

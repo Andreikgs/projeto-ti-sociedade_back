@@ -2,7 +2,7 @@
 @import url('../components/modal/css/modalCliente.css');
 @import url('../components/sidebar/css/sidebar.css');
 
-.container {
+.container-page {
     display: flex; 
     min-height: 100vh; 
 }

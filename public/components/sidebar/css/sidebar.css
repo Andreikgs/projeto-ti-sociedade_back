@@ -6,7 +6,16 @@
     transition: width 0.3s; 
     overflow: hidden; 
     display: flex; 
-    align-items: flex-start; 
+    flex-direction: column; /* Altera a direção do flexbox para coluna */
+    justify-content: space-between; /* Espaça os itens para ocupar todo o espaço disponível */
+}
+
+.nav-links {
+    flex-grow: 1; /* Permite que as nav-links cresçam para ocupar espaço disponível */
+}
+
+.logout {
+    margin-top: auto; /* Empurra o item "Sair" para a parte inferior */
 }
 
 .sidebar:hover {
@@ -38,24 +47,26 @@
     text-decoration: none;
     color: var(--text-color-secondary); 
     padding: 10px; 
-    border-radius: 5px; 
     transition: background-color 0.3s; 
     white-space: nowrap; 
+    display: flex;
+    align-items: center;
 }
 
-
-
-.nav-links a:hover {
-    background-color: var(--background-color-tertiary); 
+.nav-links .dropdown:hover {
+    background-color: var(--background-color-quaternary); 
 }
 
+.nav-links .sub-links a:hover {
+    background-color: var(--background-color-sextiary); 
+}
 
 .sub-links {
     list-style-type: none; 
     margin: 0; 
     padding: 0; 
     display: none; 
-    margin-left: 20px;
+    background-color: var(--background-color-quinary);
 }
 
 /* .nav-links li:hover .sub-links {
@@ -66,17 +77,22 @@
     display: flex;
     padding: 5px 10px; 
     color: var(--text-color-secondary); 
-    transition: background-color 0.3s;
-    margin-left: 20px; 
+    padding-left: 40px; 
+    opacity: 0;
+    transition: opacity 1s, background-color 0.3s;
+}
+.sub-links a.show  {
+    opacity: 1; 
 }
 
 .sub-links a:hover {
-    background-color: var(--background-color-tertiary);
+    background-color: var(--background-color-quaternary);
 }
 
 .nav-links i {
     margin-right: 10px; 
-    min-width: 30px; 
+    font-size: 18px; 
+    
 }
 
 .link-name {
@@ -87,4 +103,18 @@
 
 .sidebar:hover .link-name {
     opacity: 1; 
+}
+
+.sidebar-nav-indicator{
+    font-size: 13px !important;
+    color: var(--shape-transparency);
+}
+
+.sidebar-nav-indicator.down {
+    transform: rotate(-90deg); /* Rotaciona o ícone 180 graus */
+    transition: transform 0.3s; /* Transição suave */
+}
+.sidebar-nav-indicator.left {
+    transform: rotate(0deg); /* Rotaciona o ícone 180 graus */
+    transition: transform 0.3s; /* Transição suave */
 }

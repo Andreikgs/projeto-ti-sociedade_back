@@ -8,16 +8,22 @@ async function loadSidebar() {
         if (!response.ok) {
             throw new Error('Erro ao carregar a sidebar');
         }
+        
+        // Adiciona o conteúdo HTML da sidebar
         const sidebarHTML = await response.text();
         document.getElementById('sidebar').innerHTML = sidebarHTML;
 
+        // Injeta o script manualmente após o HTML ser carregado
+        const script = document.createElement('script');
+        script.src = 'components/sidebar/js/sidebarUI.js'; // Caminho do seu script de interação da sidebar
+        document.body.appendChild(script);
         
+        // Adiciona os event listeners
         addSidebarEventListeners();
     } catch (error) {
         console.error(error);
     }
 }
-
 function addSidebarEventListeners() {
     const cadastrarClientesButton = document.getElementById("adicionar-clientes");
     if (cadastrarClientesButton) {
@@ -27,30 +33,3 @@ function addSidebarEventListeners() {
         });
     }
 }
-
-document.querySelectorAll('.nav-links > li > a').forEach(item => {
-    item.addEventListener('click', function(event) {
-        event.preventDefault(); // Evita que o link redirecione
-        event.stopPropagation(); // Previne o fechamento imediato
-
-        // Fecha qualquer submenu aberto, exceto o do item atual
-        document.querySelectorAll('.sub-links').forEach(sub => {
-            if (sub !== item.nextElementSibling) {
-                sub.style.display = 'none';
-            }
-        });
-
-        // Alterna a exibição do submenu do item atual
-        const subLinks = item.nextElementSibling;
-        if (subLinks && subLinks.classList.contains('sub-links')) {
-            subLinks.style.display = subLinks.style.display === 'block' ? 'none' : 'block';
-        }
-    });
-});
-
-// Fechar os submenus ao clicar fora do menu
-document.addEventListener('click', function() {
-    document.querySelectorAll('.sub-links').forEach(sub => sub.style.display = 'none');
-});
-
-
