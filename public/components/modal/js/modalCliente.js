@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", async function () {
     const modal = document.getElementById("modal");
-    const span = document.getElementsByClassName("close")[0];
+    const closeButton = document.getElementsByClassName("close")[0];
 
     await loadModalContent();
 
-    if (!modal || !span) return;
+    if (!modal || !closeButton) return;
 
-    // Fecha a modal ao clicar no "X"
-    span.onclick = () => {
+    
+    closeButton.onclick = () => {
         modal.style.display = "none";
     };
 
-    // Fecha a modal ao clicar na área de fundo
+    
     window.onclick = function (event) {
         if (event.target === modal) {
             modal.style.display = "none";
@@ -31,6 +31,7 @@ async function loadModalContent() {
         addModalEventListeners();
     } catch (error) {
         console.error(error);
+        showError('Não foi possível carregar o conteúdo da modal.');
     }
 }
 
@@ -39,13 +40,34 @@ function addModalEventListeners() {
     const errorMessageDiv = document.getElementById("error-message");
     const successMessageDiv = document.getElementById("success-message");
     const modal = document.getElementById("modal");
+    const prosseguirButton = document.getElementById("prosseguir");
+    const cancelarButton = document.getElementById("cancelar");
+    const contactFormContainer = document.getElementById("contactFormContainer");
 
     if (clientForm) {
+        
+        clientForm.addEventListener("input", () => {
+            const isValid = clientForm.checkValidity();
+            prosseguirButton.disabled = !isValid;
+        });
+
+       
+        prosseguirButton.addEventListener("click", () => {
+            if (clientForm.checkValidity()) {
+                contactFormContainer.style.display = "block"; 
+                clientForm.style.display = "none"; 
+            }
+        });
+
+       
+        cancelarButton.addEventListener("click", () => {
+            modal.style.display = "none"; 
+        });
+
+      
         clientForm.addEventListener("submit", async (event) => {
             event.preventDefault();
-            errorMessageDiv.style.display = "none";
-            errorMessageDiv.textContent = "";
-            successMessageDiv.style.display = "none"; // Esconde a mensagem de sucesso antes do envio
+            hideMessages();
 
             const formData = new FormData(clientForm);
             const data = Object.fromEntries(formData);
@@ -60,36 +82,41 @@ function addModalEventListeners() {
                     body: JSON.stringify(data),
                 });
 
-                let result;
                 if (!response.ok) {
-                    const text = await response.text();
-                    try {
-                        result = JSON.parse(text);
-                    } catch (e) {
-                        result = { message: text || 'Erro desconhecido' };
-                    }
-                    
-                    errorMessageDiv.textContent = `Erro: ${result.message || 'Erro desconhecido'}`;
-                    errorMessageDiv.style.display = "block";
+                    const errorData = await response.json();
+                    showError(`Erro: ${errorData.message || 'Erro desconhecido'}`);
                 } else {
-                    result = await response.json();
+                    const result = await response.json();
                     console.log("Cliente cadastrado!");
-                    successMessageDiv.textContent = `Cliente cadastrado com sucesso! ID: ${result.id}`;
-                    successMessageDiv.style.display = "block"; // Exibe a mensagem de sucesso
+                    showSuccess(`Cliente cadastrado com sucesso! ID: ${result.id}`);
 
-                    // Limpa o formulário
-                    clientForm.reset(); // Limpa todos os campos do formulário
+                    clientForm.reset(); 
 
-                    // Fecha a modal após um pequeno atraso
                     setTimeout(() => {
                         modal.style.display = "none"; 
-                    }, 2000); // Adiciona um atraso antes de fechar
+                    }, 2000);
                 }
             } catch (error) {
                 console.error(error);
-                errorMessageDiv.textContent = `Erro: ${error.message || 'Erro desconhecido'}`;
-                errorMessageDiv.style.display = "block";
+                showError(`Erro: ${error.message || 'Erro desconhecido'}`);
             }
         });
     }
+}
+
+function hideMessages() {
+    document.getElementById("error-message").style.display = "none";
+    document.getElementById("success-message").style.display = "none";
+}
+
+function showError(message) {
+    const errorMessageDiv = document.getElementById("error-message");
+    errorMessageDiv.textContent = message;
+    errorMessageDiv.style.display = "block";
+}
+
+function showSuccess(message) {
+    const successMessageDiv = document.getElementById("success-message");
+    successMessageDiv.textContent = message;
+    successMessageDiv.style.display = "block";
 }

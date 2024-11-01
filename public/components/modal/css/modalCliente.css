@@ -12,33 +12,19 @@
 
 .modal-content {
     background-color: var(--background-color-primary);
-    margin: 10% auto; 
+    margin: 5% auto; 
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    width: 90%; 
-    max-width: 500px; 
+    border-radius: 12px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+    width: 400px;  
+    max-width: 90%; 
     animation: fadeIn 0.3s; 
-}
-
-.close {
-    color: var(--text-color-secondary);
-    float: right; 
-    font-size: 28px; 
-    font-weight: bold; 
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: var(--text-color-tertiary);
-    text-decoration: none; 
-    cursor: pointer; 
 }
 
 h2 {
     margin-bottom: 20px; 
     color: var(--text-color-primary);
+    text-align: center;
 }
 
 form {
@@ -63,13 +49,6 @@ select {
     transition: border 0.3s; 
 }
 
-input[type="text"]:focus,
-input[type="date"]:focus,
-select:focus {
-    border-color: var(--text-color-tertiary); 
-    outline: none; 
-}
-
 button {
     padding: 10px; 
     background-color: var(--background-color-tertiary); 
@@ -79,8 +58,25 @@ button {
     font-size: 16px; 
     cursor: pointer; 
     transition: background 0.3s; 
+    width: 100%; 
+    margin-top: 10px;
 }
 
-button:hover {
-    background-color: #d4a800; 
+.button-container {
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 15px; 
+}
+
+#error-message, #success-message {
+    display: none; 
+    margin-top: 10px;
+}
+
+#error-message {
+    color: red; 
+}
+
+#success-message {
+    color: green; 
 }
