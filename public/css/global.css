@@ -13,10 +13,12 @@
     --background-color-sextiary: #464646;
     --surface-color: #F5F5F5;
     --skeleton-color: #D9D9D9;
+    --canvas-color: #e5eaed;
     --shape-transparency: #ffffff8f;
     --text-color-primary: #313131;
     --text-color-secondary: #FFFFFF;
     --text-color-tertiary: #d4bb00; 
+    --text-color-quaternary: #1bbae1;
     --font-family: "Poppins", sans-serif;
     --text: 16px/150% var(--font-family);
 }
@@ -26,3 +28,120 @@ body {
     color: var(--text-color-primary);
     background-color: var(--background-color-primary);
 }
+
+/* Início Estilizações de texto */
+.normal-text {
+    font-weight: normal!important;
+}
+/* Fim Estilizações de texto */
+
+/* Início Content Header */
+.content-header {
+    background-color: #ffffff;
+    border-top: 1px solid #eaedf1;
+    border-bottom: 1px solid #dbe1e8;
+    padding: 5px 40px !important;
+}
+
+.content-header h1,
+.content-header h2 {
+    margin: 0;
+    font-size: 26px;
+    line-height: 32px;
+}
+
+.content-header small{
+    font-size: 17px;
+    font-weight: 200;
+}
+
+.header-section h1 i {
+    font-size: 56px;
+    float: right;
+    margin: 2px 0 0 10px;
+    color: #eaedf1;
+    margin: 0 0 0 10px;
+    line-height: 64px;
+}
+
+.header-section {
+    padding: 30px 10px;
+}
+
+.content-header,
+.content-top {
+    margin: -10px -5px 10px;
+}
+
+.content-top {
+    background-color: #ffffff;
+    border-bottom: 1px solid #dbe1e8;
+}
+
+/* Fim content header */
+
+/* Início breadcrumps */
+.breadcrumb {
+    padding: 5px 40px !important;
+    background-color: #fff !important;
+}
+
+.breadcrumb i {
+    font-size: 14px;
+}
+
+.breadcrumb-top {
+    margin: -10px -5px 10px;
+    padding: 7px 10px;
+    border-top: 1px solid #eaedf1;
+    border-bottom: 1px solid #dbe1e8;
+    border-bottom-color: #eaedf1;
+    font-size: 12px;
+}
+
+.content-header + .breadcrumb-top,
+.breadcrumb-top + .content-header {
+    margin-top: -11px;
+}
+
+.breadcrumb > li + li:before {
+    content: "\203a";
+    margin:0 10px;
+}
+.breadcrumb > li a {
+    color: var(--text-color-quaternary);
+    font-weight:600;
+    text-decoration: none;
+
+}
+.breadcrumb > li {
+    font-size: 12px;
+}
+/* Fim breadcrumps */
+
+
+/* Início container das páginas */
+.container-page {
+    display: flex; 
+    min-height: 100vh; 
+    background-color: var(--canvas-color);
+}
+
+.content {
+    flex: 1; 
+
+    height: fit-content;
+    overflow-x: hidden; 
+}
+.content-page{
+    margin: 20px; 
+    padding: 20px; 
+    max-width: calc(100% - 40px); 
+
+    background-color: #ffffff;
+}
+
+.content h1 {
+    margin-top: 10px; 
+}
+/* Fim container das páginas */
