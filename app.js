@@ -18,11 +18,11 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 app.use('/usuarios/login', UserRoute);
-app.use('/Clientes', ClienteRoute);
-app.use('/TipoServicos', TipoServicosRoute);
-app.use('/DocumentoLicitcao', DocumentoLicitacaoRoute);
-app.use('/HistoricoLicitacao', HistoricoLicitcaoRoute);
-app.use('/Licitacao', LicitacaoRoute);
+app.use('/clientes', ClienteRoute);
+app.use('/tipoServicos', TipoServicosRoute);
+app.use('/documentoLicitcao', DocumentoLicitacaoRoute);
+app.use('/historicoLicitacao', HistoricoLicitcaoRoute);
+app.use('/licitacao', LicitacaoRoute);
 
 app.get('/dashboard', authenticateToken, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'dashboard.html'));

@@ -1,4 +1,48 @@
-/*Clientes*/
+DELIMITER //
+
+CREATE PROCEDURE sp_inserir_cliente (
+    IN p_cnpj CHAR(14),
+    IN p_razao_social VARCHAR(255),
+    IN p_nome_fantasia VARCHAR(255),
+    IN p_status ENUM('ativo', 'inativo'),
+    IN p_data_cadastro DATE
+)
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM clientes WHERE cnpj = p_cnpj) THEN
+        INSERT INTO clientes (cnpj, razao_social, nome_fantasia, status, data_cadastro)
+        VALUES (p_cnpj, p_razao_social, p_nome_fantasia, p_status, p_data_cadastro);
+        
+        SELECT LAST_INSERT_ID() AS id_cliente;
+    ELSE
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cliente já cadastrado com este CNPJ.';
+    END IF;
+END //
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE sp_buscar_cliente_por_cnpj (
+    IN p_cnpj CHAR(14)
+)
+BEGIN
+    SELECT * FROM clientes WHERE cnpj = p_cnpj;
+END //
+
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 DELIMITER //
 

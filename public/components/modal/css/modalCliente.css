@@ -7,14 +7,76 @@
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgb(0, 0, 0); 
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: rgba(0, 0, 0, 0.6); 
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; 
+    background-color: var(--background-color-primary);
+    margin: 5% auto; 
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; 
+    border-radius: 12px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+    width: 400px;  
+    max-width: 90%; 
+    animation: fadeIn 0.3s; 
+}
+
+h2 {
+    margin-bottom: 20px; 
+    color: var(--text-color-primary);
+    text-align: center;
+}
+
+form {
+    display: flex; 
+    flex-direction: column; 
+}
+
+label {
+    margin: 10px 0 5px; 
+    font-weight: bold; 
+    color: var(--text-color-primary);
+}
+
+input[type="text"],
+input[type="date"],
+select {
+    padding: 10px; 
+    border: 1px solid var(--skeleton-color); 
+    border-radius: 5px; 
+    margin-bottom: 15px; 
+    font-size: 16px; 
+    transition: border 0.3s; 
+}
+
+button {
+    padding: 10px; 
+    background-color: var(--background-color-tertiary); 
+    border: none; 
+    border-radius: 5px; 
+    color: var(--text-color-secondary); 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background 0.3s; 
+    width: 100%; 
+    margin-top: 10px;
+}
+
+.button-container {
+    display: flex; 
+    justify-content: space-between; 
+    margin-top: 15px; 
+}
+
+#error-message, #success-message {
+    display: none; 
+    margin-top: 10px;
+}
+
+#error-message {
+    color: red; 
+}
+
+#success-message {
+    color: green; 
 }

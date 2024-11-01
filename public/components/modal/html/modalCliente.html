@@ -1,23 +1,68 @@
-<span class="close">&times;</span>
-<h2>Cadastrar Cliente</h2>
-<form id="clientForm">
-    <label for="cnpj">CNPJ:</label>
-    <input type="text" id="cnpj" name="cnpj" required />
+<div class="modal-content">
+    <span class="close" aria-label="Fechar">&times;</span>
+    <h2> Cadastrar Cliente</h2>
+    <form id="clientForm">
+        <label for="cnpj">CNPJ:</label>
+        <input type="text" id="cnpj" name="cnpj" placeholder="Digite o CNPJ" required />
 
-    <label for="razaoSocial">Razão Social:</label>
-    <input type="text" id="razaoSocial" name="razaoSocial" required />
+        <label for="razaoSocial">Razão Social:</label>
+        <input type="text" id="razaoSocial" name="razaoSocial" placeholder="Digite a Razão Social" required />
 
-    <label for="nomeFantasia">Nome Fantasia:</label>
-    <input type="text" id="nomeFantasia" name="nomeFantasia" />
+        <label for="nomeFantasia">Nome Fantasia:</label>
+        <input type="text" id="nomeFantasia" name="nomeFantasia" placeholder="Digite o Nome Fantasia" />
 
-    <label for="status">Status:</label>
-    <select id="status" name="status" required>
-        <option value="ativo">Ativo</option>
-        <option value="inativo">Inativo</option>
-    </select>
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="">Selecione um status</option>
+            <option value="ativo">Ativo</option>
+            <option value="inativo">Inativo</option>
+        </select>
 
-    <label for="dataCadastro">Data de Cadastro:</label>
-    <input type="date" id="dataCadastro" name="dataCadastro" required />
+        <label for="dataCadastro">Data de Cadastro:</label>
+        <input type="date" id="dataCadastro" name="dataCadastro" required />
 
-    <button type="submit">Cadastrar</button>
-</form>
+        <div class="button-container">
+            <button type="button" id="avançar" disabled>Avançar</button>
+            <button type="button" id="cancelar">Cancelar</button>
+        </div>
+    </form>
+
+    <div id="error-message" style="color: red; display: none;"></div>
+    <div id="success-message" style="display:none; color: green;"></div>
+
+    <div id="contactFormContainer" style="display: none; margin-top: 20px;">
+        <h3> Adicionar Contatos</h3>
+        <form id="contactForm">
+            <label for="tipoTelefone">Tipo de Telefone:</label>
+            <select id="tipoTelefone" name="tipoTelefone" required>
+                <option value="">Selecione o tipo</option>
+                <option value="1">Celular</option>
+                <option value="2">Fixo</option>
+            </select>
+
+            <label for="ddd">DDD:</label>
+            <input type="text" id="ddd" name="ddd" maxlength="3" placeholder="Digite o DDD" required />
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" maxlength="10" placeholder="Digite o Telefone" required />
+
+            <label for="nomeCompleto">Nome Completo:</label>
+            <input type="text" id="nomeCompleto" name="nomeCompleto" placeholder="Digite o Nome Completo" required />
+
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo" required>
+                <option value="">Selecione o sexo</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+            </select>
+
+            <label for="dataNascimento">Data de Nascimento:</label>
+            <input type="date" id="dataNascimento" name="dataNascimento" />
+
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" maxlength="11" placeholder="Digite o CPF" required />
+
+            <button type="submit">Adicionar Contato</button>
+        </form>
+    </div>
+</div>
