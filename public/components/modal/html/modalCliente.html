@@ -1,31 +1,60 @@
-<div class="modal-content">
+<div class="modal-content max-width-800">
     <span class="close" aria-label="Fechar">&times;</span>
-    <h2> Cadastrar Cliente</h2>
-    <form id="clientForm">
-        <label for="cnpj">CNPJ:</label>
-        <input type="text" id="cnpj" name="cnpj" placeholder="Digite o CNPJ" required />
+    <div class="modal-header">
+        <h2 class="modal-title text-center"><i class="fa-regular fa-address-card"></i> LiciteAqui - Cadastrar Cliente</h2>
+    </div>
+        <div class="modal-body">
+            <div class="container">
+                <form id="clientForm">
+                    <div class="row">
+                        <!-- CNPJ -->
+                        <div class="form-group col-md-6">
+                            <label for="cnpj">CNPJ:</label>
+                            <input type="text" id="cnpj" name="cnpj" class="form-control" placeholder="Digite o CNPJ" required />
+                        </div>
+                        
+                        <!-- Data de Cadastro -->
+                        <div class="form-group col-md-6">
+                            <label for="dataCadastro">Data de Cadastro:</label>
+                            <input type="date" id="dataCadastro" name="dataCadastro" class="form-control" required />
+                        </div>
+                    </div>
 
-        <label for="razaoSocial">Razão Social:</label>
-        <input type="text" id="razaoSocial" name="razaoSocial" placeholder="Digite a Razão Social" required />
+                    <div class="row">
+                        <!-- Nome Fantasia -->
+                        <div class="form-group col-md-6">
+                            <label for="nomeFantasia">Nome Fantasia:</label>
+                            <input type="text" id="nomeFantasia" name="nomeFantasia" class="form-control" placeholder="Digite o Nome Fantasia" />
+                        </div>
+                        <!-- Status -->
+                        <div class="form-group col-md-6">
+                            <label for="status">Status:</label>
+                            <select id="status" name="status" class="form-control" required>
+                                <option value="">Selecione um status</option>
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+                    </div>
 
-        <label for="nomeFantasia">Nome Fantasia:</label>
-        <input type="text" id="nomeFantasia" name="nomeFantasia" placeholder="Digite o Nome Fantasia" />
+                    <div class="row">
+                        <!-- Razão Social -->
+                        <div class="form-group col-md-12">
+                            <label for="razaoSocial">Razão Social:</label>
+                            <input type="text" id="razaoSocial" name="razaoSocial" class="form-control" placeholder="Digite a Razão Social" required />
+                        </div>
+                    </div>
 
-        <label for="status">Status:</label>
-        <select id="status" name="status" required>
-            <option value="">Selecione um status</option>
-            <option value="ativo">Ativo</option>
-            <option value="inativo">Inativo</option>
-        </select>
-
-        <label for="dataCadastro">Data de Cadastro:</label>
-        <input type="date" id="dataCadastro" name="dataCadastro" required />
-
-        <div class="button-container">
-            <button type="button" id="avançar" disabled>Avançar</button>
-            <button type="button" id="cancelar">Cancelar</button>
+                    <!-- Botões -->
+                    <div class="button-container text-center mt-4">
+                        <button type="button" id="cancelar" class="btn btn-danger mx-2">Cancelar</button>
+                        <button type="button" id="contactFormContainer" class="btn btn-primary mx-2">Avançar</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
+    </div>
+
 
     <div id="error-message" style="color: red; display: none;"></div>
     <div id="success-message" style="display:none; color: green;"></div>
@@ -66,3 +95,5 @@
         </form>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="/public/components/modal/js/modalClienteUI.js"></script>

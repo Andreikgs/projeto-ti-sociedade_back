@@ -46,6 +46,29 @@ function addModalEventListeners() {
 
     if (clientForm) {
         
+        // Máscara de cnpj no campo do cnpj do cliente
+        document.getElementById('cnpj').addEventListener('input', function(e) {
+            let input = e.target;
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 14) {
+                value = value.substring(0, 14); 
+            }
+            if (value.length > 2) {
+                value = value.replace(/(\d{2})(\d)/, '$1.$2');
+            }
+            if (value.length > 6) {
+                value = value.replace(/(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            }
+            if (value.length > 10) {
+                value = value.replace(/(\d{2})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3/$4'); 
+            }
+            if (value.length > 15) {
+                value = value.replace(/(\d{2})\.(\d{3})\.(\d{3})\/(\d{4})(\d)/, '$1.$2.$3/$4-$5'); 
+            }
+        
+            input.value = value;
+        });
+
         clientForm.addEventListener("input", () => {
             const isValid = clientForm.checkValidity();
             prosseguirButton.disabled = !isValid;
@@ -120,3 +143,4 @@ function showSuccess(message) {
     successMessageDiv.textContent = message;
     successMessageDiv.style.display = "block";
 }
+
