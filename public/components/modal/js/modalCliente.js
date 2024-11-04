@@ -37,11 +37,16 @@ async function loadModalContent() {
 
 function addModalEventListeners() {
     const clientForm = document.getElementById("clientForm");
+    const contactForm = document.getElementById("contactForm");
+    const titleCliente = document.getElementById('title-cliente');
+    const titleContato = document.getElementById('title-contato');
     const errorMessageDiv = document.getElementById("error-message");
     const successMessageDiv = document.getElementById("success-message");
     const modal = document.getElementById("modal");
+    const close = document.getElementById('close-cliente');
     const prosseguirButton = document.getElementById("prosseguir");
     const cancelarButton = document.getElementById("cancelar");
+    const avancarButton = document.getElementById("avancar");
     const contactFormContainer = document.getElementById("contactFormContainer");
 
     if (clientForm) {
@@ -69,60 +74,44 @@ function addModalEventListeners() {
             input.value = value;
         });
 
-        clientForm.addEventListener("input", () => {
-            const isValid = clientForm.checkValidity();
-            prosseguirButton.disabled = !isValid;
-        });
-
-       
-        prosseguirButton.addEventListener("click", () => {
-            if (clientForm.checkValidity()) {
-                contactFormContainer.style.display = "block"; 
-                clientForm.style.display = "none"; 
+        // Máscara de cpf no campo do cpf do contato
+        document.getElementById('cpf').addEventListener('input', function(e) {
+            let input = e.target;
+            let value = input.value.replace(/\D/g, ''); // Remove qualquer caractere não numérico
+        
+            if (value.length > 11) {
+                value = value.substring(0, 11); // Limita o valor a 11 dígitos
             }
+        
+            if (value.length > 0) {
+                value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona o primeiro ponto
+            }
+        
+            if (value.length > 7) {
+                value = value.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3'); // Adiciona o segundo ponto
+            }
+        
+            if (value.length > 10) {
+                value = value.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4'); // Adiciona o traço
+            }
+        
+            input.value = value;
         });
 
-       
+        avancarButton.addEventListener("click", () => {
+            clientForm.style.display = 'none';
+            titleCliente.style.display = 'none';
+            titleContato.style.display = 'block';
+            contactForm.style.display = 'block';
+        });
+
+        
         cancelarButton.addEventListener("click", () => {
-            modal.style.display = "none"; 
+            modal.style.display= 'none';
         });
 
-      
-        clientForm.addEventListener("submit", async (event) => {
-            event.preventDefault();
-            hideMessages();
-
-            const formData = new FormData(clientForm);
-            const data = Object.fromEntries(formData);
-            console.log('Dados do formulário:', data);
-
-            try {
-                const response = await fetch('/clientes', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    showError(`Erro: ${errorData.message || 'Erro desconhecido'}`);
-                } else {
-                    const result = await response.json();
-                    console.log("Cliente cadastrado!");
-                    showSuccess(`Cliente cadastrado com sucesso! ID: ${result.id}`);
-
-                    clientForm.reset(); 
-
-                    setTimeout(() => {
-                        modal.style.display = "none"; 
-                    }, 2000);
-                }
-            } catch (error) {
-                console.error(error);
-                showError(`Erro: ${error.message || 'Erro desconhecido'}`);
-            }
+        close.addEventListener("click", () => {
+            modal.style.display= 'none';
         });
     }
 }
