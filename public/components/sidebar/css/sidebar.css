@@ -1,4 +1,5 @@
 @import url('/css/global.css');
+
 .sidebar {
     width: 60px; 
     background-color: var(--background-color-secondary);
@@ -6,16 +7,18 @@
     transition: width 0.3s; 
     overflow: hidden; 
     display: flex; 
-    flex-direction: column; /* Altera a direção do flexbox para coluna */
-    justify-content: space-between; /* Espaça os itens para ocupar todo o espaço disponível */
+    flex-direction: column; 
+    justify-content: space-between; 
+    position: sticky;
+    top: 0;
 }
 
 .nav-links {
-    flex-grow: 1; /* Permite que as nav-links cresçam para ocupar espaço disponível */
+    flex-grow: 1;
 }
 
 .logout {
-    margin-top: auto; /* Empurra o item "Sair" para a parte inferior */
+    margin-top: auto;
 }
 
 .sidebar:hover {
@@ -69,10 +72,6 @@
     background-color: var(--background-color-quinary);
 }
 
-/* .nav-links li:hover .sub-links {
-    display: block; 
-} */
-
 .sub-links a {
     display: flex;
     padding: 5px 10px; 
@@ -111,10 +110,11 @@
 }
 
 .sidebar-nav-indicator.down {
-    transform: rotate(-90deg); /* Rotaciona o ícone 180 graus */
-    transition: transform 0.3s; /* Transição suave */
+    transform: rotate(-90deg); 
+    transition: transform 0.3s; 
 }
+
 .sidebar-nav-indicator.left {
-    transform: rotate(0deg); /* Rotaciona o ícone 180 graus */
-    transition: transform 0.3s; /* Transição suave */
+    transform: rotate(0deg); 
+    transition: transform 0.3s; 
 }

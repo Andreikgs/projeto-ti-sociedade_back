@@ -28,6 +28,10 @@ app.get('/dashboard', authenticateToken, (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'dashboard.html'));
 });
 
+app.get('/licitacoes', authenticateToken, (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'licitacoes.html'));
+});
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });

@@ -35,7 +35,6 @@ body {
 }
 .text-center {
     text-align:center !important;
-    width: 100% !important;
 }
 /* Fim Estilizações de texto */
 
@@ -198,3 +197,123 @@ body {
     height: calc(2.25rem + 2px); 
 }
 /* Fim modal */
+
+/* Início tables */
+.table a {
+    color: var(--text-color-quaternary);
+    font-size: 12px;
+    font-weight:600;
+    text-decoration: none;
+}
+
+.table.table-vcenter th,
+.table.table-vcenter td {
+    vertical-align: middle;
+}
+
+.table-options {
+    padding: 6px 0;
+}
+
+.table thead > tr > th {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.table thead > tr > th > small {
+    font-weight: 400;
+    font-size: 75%;
+}
+
+.table thead > tr > th,
+.table thead > tr > td,
+.table tfoot > tr > th,
+.table tfoot > tr > td {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.table tfoot > tr > th,
+.table tfoot > tr > td {
+    background-color: #f9fafc;
+}
+
+.table-borderless tbody > tr > th,
+.table-borderless tbody > tr > td {
+    border-top-width: 0;
+}
+
+.table thead > tr > th,
+.table tbody > tr > th,
+.table tfoot > tr > th,
+.table thead > tr > td,
+.table tbody > tr > td,
+.table tfoot > tr > td,
+.table tbody + tbody,
+.table-bordered,
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > th,
+.table-bordered > tfoot > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > td {
+    border-color: #eaedf1;
+}
+
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+    background-color: #fcf9f9;
+    color:black;
+}
+
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+    background-color: #fcf9f9;
+    color:black;
+}
+.table-clicked > tbody > tr {
+    cursor: pointer;
+}
+/* Fim tables */
+.nav, .nav-tabs {
+    padding-left: 0 !important;
+    padding-bottom: 0;
+    border-bottom: none;
+    border-left:none;
+}
+.block-title {
+    margin: -20px -15px 20px;
+    background-color: #f9fafc;
+    border-bottom: 1px solid #eaedf1;
+    padding-right: 10px;
+}
+
+.block-title .nav-tabs {
+    padding: 3px 1px 0;
+    border-bottom: none;
+}
+
+.block-title .nav-tabs > li > a {
+    border-bottom: none;
+}
+
+.nav-tabs > li > a {
+    padding:0px 15px !important; 
+    color: var(--text-color-quaternary);
+    font-weight:600;
+    text-decoration: none;
+    font-size: 12px;
+}
+.nav > li i {
+    font-size: 14px;
+}
+.nav > li {
+    padding:5px 15px !important; 
+}
+.nav > li:hover,
+.nav > li:focus {
+    background-color: #f9fafc;
+}
+.nav-tabs li.active{
+    background-color:  var(--background-color-primary) !important;
+}

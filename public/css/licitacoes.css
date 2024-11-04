@@ -1,0 +1,17 @@
+@import url('global.css');
+@import url('../components/modal/css/modalCliente.css');
+@import url('../components/sidebar/css/sidebar.css');
+.prioridade {
+    display: inline-block;
+    
+}
+.prioridade span{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.prioridade-1 {
+	background: #D50000;
+}

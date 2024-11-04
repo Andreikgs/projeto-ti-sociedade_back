@@ -26,10 +26,17 @@ async function loadSidebar() {
 }
 function addSidebarEventListeners() {
     const cadastrarClientesButton = document.getElementById("adicionar-clientes");
+    const listarLicitacoes = document.getElementById("listarLicitacoes");
     if (cadastrarClientesButton) {
         cadastrarClientesButton.addEventListener("click", () => {
             const modal = document.getElementById("modal");
             modal.style.display = "block";
+        });
+    }
+
+    if (listarLicitacoes) {
+        listarLicitacoes.addEventListener("click", () => {
+            window.location.href = '/licitacoes';
         });
     }
 }
