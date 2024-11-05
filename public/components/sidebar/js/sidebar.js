@@ -27,10 +27,18 @@ async function loadSidebar() {
 function addSidebarEventListeners() {
     const cadastrarClientesButton = document.getElementById("adicionar-clientes");
     const listarLicitacoes = document.getElementById("listarLicitacoes");
+    const dashboardGeral = document.getElementById("dashboardGeral");
+
     if (cadastrarClientesButton) {
         cadastrarClientesButton.addEventListener("click", () => {
             const modal = document.getElementById("modal");
             modal.style.display = "block";
+        });
+    }
+
+    if (dashboardGeral) {
+        dashboardGeral.addEventListener("click", () => {
+            window.location.href = '/dashboard';
         });
     }
 
