@@ -41,6 +41,9 @@ body {
 .max-width-800 {
     max-width: 800px !important;
 }
+.max-width-1200 {
+    max-width: 1200px !important;
+}
 
 .width-30{
     max-width: 30px !important;

@@ -26,12 +26,28 @@ async function loadSidebar() {
 }
 function addSidebarEventListeners() {
     const cadastrarClientesButton = document.getElementById("adicionar-clientes");
-    const listarLicitacoes = document.getElementById("listarLicitacoes");
-    const dashboardGeral = document.getElementById("dashboardGeral");
+    const listarLicitacoes = document.getElementById("listar-licitacoes");
+    const dashboardGeral = document.getElementById("dashboard-geral");
+    const adicionarLicitacao = document.getElementById("adicionar-licitacao");
+    const config = document.getElementById("config");
 
     if (cadastrarClientesButton) {
         cadastrarClientesButton.addEventListener("click", () => {
             const modal = document.getElementById("modal");
+            modal.style.display = "block";
+        });
+    }
+
+    if (adicionarLicitacao) {
+        adicionarLicitacao.addEventListener("click", () => {
+            const modal = document.getElementById("modalLicitacao");
+            modal.style.display = "block";
+        });
+    }
+
+    if (config) {
+        config.addEventListener("click", () => {
+            const modal = document.getElementById("modalConfig");
             modal.style.display = "block";
         });
     }

@@ -1,0 +1,121 @@
+<div class="modal-content max-width-800">
+    <span class="close" id="close-licitacao" aria-label="Fechar" >&times;</span>
+    <div class="modal-header">
+        <h2 class="modal-title text-center col-12" id="title-cliente"><i class="fa-solid fa-gear"></i> LiciteAqui - Cadastrar Licitação </h2>
+    </div>
+    <div class="modal-body row">
+        <div class="container">
+            <form id="licitacaoForm">
+                <div class="row">
+                    <!-- Cliente -->
+                    <div class="form-group col-md-12">
+                        <label for="cnpj">Cliente:</label>
+                        <select id="cliente" name="cliente" class="form-select" required>
+                            <option value="">Selecione um cliente</option>
+                            <option value="">Teste Cliente 1</option>
+                            <option value="">Teste Cliente 2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Órgão -->
+                    <div class="form-group col-md-12">
+                        <label for="orgao">Órgão:</label>
+                        <input type="text" id="orgao" name="orgao" class="form-control" placeholder="Informe qual o órgão responsável" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Modalidade -->
+                    <div class="form-group col-md-12">
+                        <label for="modalidade">Modalidade:</label>
+                        <select id="modalidade" name="modalidade" class="form-select" required>
+                            <option value="">Selecione uma modalidade</option>
+                            <option value="">Teste Modalidade 1</option>
+                            <option value="">Teste Modalidade 2</option>
+                        </select>                    
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Nº da Licitação -->
+                    <div class="form-group col-md-6">
+                        <label for="n_licitacao">Nº da Licitação:</label>
+                        <input type="text" id="n_licitacao" name="n_licitacao" class="form-control" placeholder="Informe o número da licitação" />
+                    </div>
+                    <!-- Código da Licitação -->
+                    <div class="form-group col-md-6">
+                        <label for="cod_licitacao">Código da Licitação:</label>
+                        <input type="text" id="cod_licitacao" name="cod_licitacao" class="form-control" placeholder="Informe o número da licitação" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Portal -->
+                    <div class="form-group col-md-12">
+                        <label for="modalidade">Portal:</label>
+                        <input type="text" id="portal" name="portal" class="form-control" placeholder="Informe o portal" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Objeto -->
+                    <div class="form-group col-md-12">
+                        <label for="modalidade">Objeto:</label>
+                        <input type="text" id="objeto" name="objeto" class="form-control" placeholder="Informe o objeto" />                  
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Cidade -->
+                    <div class="form-group col-md-6">
+                        <label for="n_licitacao">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Informe a cidade" />
+                    </div>
+                    <!-- Estado -->
+                    <div class="form-group col-md-6">
+                        <label for="cod_licitacao">Estado:</label>
+                        <input type="text" id="estado" name="estado" class="form-control" placeholder="Informe Estado" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Data/hora disputa -->
+                    <div class="form-group col-md-6 d-flex justify-content-around">
+                        <div>
+                            <label for="data_disputa">Data da disputa:</label>
+                            <input type="date" id="data_disputa" name="data_disputa" class="form-control" placeholder="Informe a Data da disputa" />
+                        </div>
+                        <div>
+                            <label for="hora_disputa">Hora da disputa:</label>
+                            <input type="time" id="hora_disputa" name="hora_disputa" class="form-control" placeholder="Informe a Hora da disputa" />
+                        </div>
+                    </div>
+                    
+                    <!-- Data/hora protocolo -->
+                    <div class="form-group col-md-6 d-flex justify-content-around">
+                        <div>
+                            <label for="data_protocolo">Data do protocolo:</label>
+                            <input type="date" id="data_protocolo" name="data_protocolo" class="form-control" placeholder="Informe a Data do protocolo" />
+                        </div>
+                        <div>
+                            <label for="hora_protocolo">Hora do protocolo:</label>
+                            <input type="time" id="hora_protocolo" name="hora_protocolo" class="form-control" placeholder="Informe a Hora do protocolo" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botões -->
+                <div class="button-container text-center mt-4">
+                    <button type="button" id="cancelar" class="btn btn-danger mx-2">Cancelar</button>
+                    <button type="button" id="avancar" class="btn btn-success mx-2">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="error-message" style="color: red; display: none;"></div>
+    <div id="success-message" style="display:none; color: green;"></div>
+</div>

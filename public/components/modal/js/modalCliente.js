@@ -77,22 +77,22 @@ function addModalEventListeners() {
         // Máscara de cpf no campo do cpf do contato
         document.getElementById('cpf').addEventListener('input', function(e) {
             let input = e.target;
-            let value = input.value.replace(/\D/g, ''); // Remove qualquer caractere não numérico
+            let value = input.value.replace(/\D/g, ''); 
         
             if (value.length > 11) {
-                value = value.substring(0, 11); // Limita o valor a 11 dígitos
+                value = value.substring(0, 11);
             }
         
             if (value.length > 0) {
-                value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona o primeiro ponto
+                value = value.replace(/(\d{3})(\d)/, '$1.$2');
             }
         
             if (value.length > 7) {
-                value = value.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3'); // Adiciona o segundo ponto
+                value = value.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
             }
         
             if (value.length > 10) {
-                value = value.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4'); // Adiciona o traço
+                value = value.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
             }
         
             input.value = value;
